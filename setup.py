@@ -1,8 +1,9 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='msgbuf',
     version='0.0.1',
+    packages=find_packages(),
     install_requires=[
         'Jinja2',
         'MarkupSafe',
@@ -10,7 +11,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'msgbufc = msgbuf:main'
+            'msgbufc = msgbuf.main:main'
         ] 
     }
 )

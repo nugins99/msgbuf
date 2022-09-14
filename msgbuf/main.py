@@ -42,6 +42,9 @@ def parse_args(args):
 
 def main():
     args = parse_args(sys.argv[1:])
+    if args.in_file is None:
+        print("No input file specified.")
+        return -1
 
     lang = get_lang(args)
     with open(args.in_file, 'r') as msg_stream:

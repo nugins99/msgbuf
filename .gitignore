@@ -1,6 +1,7 @@
 .venv
 .vscode
 dist
+build
 msgbuf.egg-info
 msgbuf/__pycache__
 test/test
