@@ -1,0 +1,7 @@
+.venv
+.vscode
+dist
+msgbuf.egg-info
+msgbuf/__pycache__
+test/test
+test/test.dSYM

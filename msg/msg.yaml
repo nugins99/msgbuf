@@ -1,0 +1,17 @@
+name: A
+desc: Description for message A
+fields: 
+  - name: a
+    type: int
+    desc: An int type
+  - name: b
+    type: float
+    desc: A float type
+  - name: c
+    type: std::string
+    desc: A string type
+  - name: d
+    type: double
+    desc: A double type
+
+
