@@ -1,0 +1,38 @@
+#include <string>
+
+{{msg.desc}}
+class {{msg.name}}
+{
+    public:
+    {% for name, prop in msg.properties.items() %}
+    /// Getter for {{ name }}
+    {{ prop.type }} {{ name}}() const { return m_{{ name }}; }
+    /// Setter for {{ name }}
+    {{ msg.name }} & {{ name }}({{ prop.type }} value) { m_{{ prop.name }} = value; return *this; }
+    {% endfor %}
+
+    /// This function provides both serialization and deserialization.
+    /// This is influenced by the boost serialization library.
+    template <typename Archive> void serialize(Archive & archive)
+    {
+    {% for name, prop in msg.properties.items()%}    archive & m_{{ name }}; 
+    {% endfor %}}
+
+    
+    bool operator==(const {{ msg.name}} & rhs) const
+    {
+        {% for name, prop in msg.properties.items() %}if (m_{{ name }} != rhs.m_{{ name }}) return false;
+        {% endfor %}return true;
+    }
+
+    bool operator!=(const {{ msg.name}} & rhs) const
+    {
+        return !(*this==rhs);
+    }
+
+    private:
+    {% for name, prop in msg.properties.items() %} 
+    {{ prop.desc }}
+    {{ prop.type }} m_{{ name }};
+    {% endfor %}
+};

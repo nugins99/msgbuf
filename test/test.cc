@@ -12,6 +12,7 @@ int main()
     a.a(42);
     a.b(11);
     a.c("Hello world");
+    a.d(3.14);
     oa << a;
 
     // Reverse the process

@@ -27,7 +27,7 @@ namespace serialization
     template <typename T, std::enable_if_t<sizeof(T) == 2, bool> = true>
     T hton(T value)
     {
-        return htons(value);
+        return ntohs(value);
     }
 
     template <typename T, std::enable_if_t<sizeof(T) == 8, bool> = true>
@@ -36,7 +36,7 @@ namespace serialization
 #if defined(__BYTE_ORDER__) && (__BYTE_ORDER__ == __ORDER_BIG_ENDIAN__)
         return value;
 #else
-        return ((((uint64_t)htonl(value)) << 32) + htonl((value) >> 32));
+        return ((((uint64_t)ntohl(value)) << 32) + ntohl((value) >> 32));
 #endif
     }
     template <typename T, std::enable_if_t<sizeof(T) == 4, bool> = true> 

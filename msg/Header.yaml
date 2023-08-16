@@ -1,0 +1,55 @@
+binaryapi: '1.0.0'
+info:
+  title: Location Services
+  version: '1.0.0'
+services:
+  location:
+    name: Location
+    desc: >
+      One way UDP broadcast.
+    protocol: udp
+    publish:
+      $ref: "#messages/location"
+  syo:
+    name: SYO
+    desc: >
+      SYO Request/Response
+    protocol: tcp
+    requests:
+      syorequest:
+        command:
+          $ref: "#messages/syorequest"
+        response:
+          $ref: "#messages/syoresponse"
+messages:
+  location:
+    desc: >
+      Location Data
+    messageid: LOCATION
+    fields:
+        syoid: 
+          type: int
+        x: 
+          type: double
+        y: 
+          type: double
+  syorequest:
+    desc: >
+      SYO Request (No Fields)
+    messageid: SYO_REQUEST
+    fields:
+      requestId: 
+        type: int
+  syoresponse:
+    desc: >
+      SYO Response
+    messageid: SYO_RESPONSE
+    fields:
+      requestId: 
+        type: int
+      id: 
+        type: int
+      lat: 
+        type: double
+      lon: 
+        type: double
